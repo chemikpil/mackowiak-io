@@ -1,0 +1,26 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Michał Mackowiak" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Web developer building yet another button component, wannabe landscape photographer still figuring out what the camera buttons do, traveler trying to see the world. Powered by good coffee and late-night gaming."
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
