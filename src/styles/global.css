@@ -33,3 +33,9 @@
     --color-surface: var(--surface);
     --color-muted: var(--muted);
 }
+
+@utility ogar-ring-* {
+    --tw-ring-color: var(--color-focus);
+    --tw-ring-offset-color: --value(--color-*);
+    @apply ring-2 ring-offset-2 outline-none;
+}
