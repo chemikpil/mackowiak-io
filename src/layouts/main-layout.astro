@@ -1,26 +1,40 @@
 ---
-import "../styles/global.css";
+import Logo from '../components/Logo.astro'
+
+import '../styles/global.css'
 
 interface Props {
-  title?: string;
+    title?: string
 }
 
-const { title = "Michał Mackowiak" } = Astro.props;
+const { title = 'Michał Mackowiak' } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-    <meta
-      name="description"
-      content="Web developer building yet another button component, wannabe landscape photographer still figuring out what the camera buttons do, traveler trying to see the world. Powered by good coffee and late-night gaming."
-    />
-  </head>
-  <body class="bg-background">
-    <slot />
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+        <meta
+            name="description"
+            content="Web developer building yet another button component, wannabe landscape photographer still figuring out what the camera buttons do, traveler trying to see the world. Powered by good coffee and late-night gaming."
+        />
+    </head>
+    <body class="flex flex-col text-foreground bg-surface h-full">
+        <header class="flex place-items-center justify-center h-24">
+            <a href="/" aria-label="Home">
+                <Logo class="size-10" />
+            </a>
+        </header>
+        <main class="flex-1 flex justify-center place-items-center">
+            <slot />
+        </main>
+        <footer
+            class="flex place-items-center justify-center h-24 text-center text-sm text-foreground/40"
+        >
+            © Michał Maćkowiak
+        </footer>
+    </body>
 </html>
