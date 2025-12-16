@@ -16,11 +16,16 @@
     }
 </style>
 
-<section class="debug card-grid gap-2 sm:gap-6 max-w-160">
+<section class="card-grid gap-2 sm:gap-6 max-w-160">
     <div class="size-40 rounded-2xl bg-sky-200" style="grid-area: avatar"></div>
     <div style="grid-area: title">
-        <h1>Michał Mackowiak</h1>
-        <p>@chemipil Poznań, Poland</p>
+        <h1 class="text-2xl font-semibold">Michał Mackowiak</h1>
+        <div class="flex gap-4">
+            <p>@chemipil</p>
+            <p class="flex items-center gap-1">
+                <img src="/poland.svg" alt="Poland" class="w-4" /> Poznań, Poland
+            </p>
+        </div>
     </div>
     <p style="grid-area: content">
         Web developer building yet another button component, wannabe landscape
