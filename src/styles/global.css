@@ -43,3 +43,11 @@
     --tw-ring-offset-color: --value(--color-*);
     @apply ring-2 ring-offset-2 outline-none rounded-xl;
 }
+
+.debug {
+    outline: 1px solid red;
+}
+
+.debug > * {
+    outline: 1px solid green;
+}

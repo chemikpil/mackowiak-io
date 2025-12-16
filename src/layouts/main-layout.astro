@@ -22,10 +22,8 @@ const { title = 'Michał Mackowiak' } = Astro.props
             content="Web developer building yet another button component, wannabe landscape photographer still figuring out what the camera buttons do, traveler trying to see the world. Powered by good coffee and late-night gaming."
         />
     </head>
-    <body class="bg-background p-2">
-        <div
-            class="flex flex-col text-foreground bg-surface h-full rounded-2xl"
-        >
+    <body>
+        <div class="flex flex-col text-foreground bg-surface h-full">
             <header class="flex place-items-center justify-center h-24">
                 <a
                     href="/"
@@ -35,7 +33,7 @@ const { title = 'Michał Mackowiak' } = Astro.props
                     <Logo class="size-10" />
                 </a>
             </header>
-            <main class="flex-1 flex justify-center place-items-center">
+            <main class="flex-1 flex justify-center place-items-center p-4">
                 <slot />
             </main>
             <footer
