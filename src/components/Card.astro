@@ -6,6 +6,7 @@
     .card-grid {
         display: grid;
         grid-template-areas: 'avatar title' 'avatar content';
+        grid-template-columns: auto 1fr;
     }
 
     @media (max-width: 640px) {
@@ -18,13 +19,13 @@
 
 <section class="card-grid gap-2 sm:gap-4 max-w-160">
     <div
-        class="h-20 sm:h-full aspect-square rounded-2xl bg-sky-200 sm:mr-2"
+        class="h-20 sm:size-40 aspect-square rounded-2xl bg-sky-200 sm:mr-2"
         style="grid-area: avatar"
     >
     </div>
     <div style="grid-area: title">
         <h1 class="text-2xl font-semibold">Michał Mackowiak</h1>
-        <div class="flex gap-4">
+        <div class="flex gap-4 text-muted text-xs">
             <p>@chemipil</p>
             <p class="flex items-center gap-1">
                 <img src="/poland.svg" alt="Poland" class="w-4" /> Poznań, Poland
