@@ -7,44 +7,72 @@
         font-family: system-ui, var(--font-sans);
         font-weight: 400;
     }
-    
+
     :root {
-        --background: oklch(0.970 0.000 0);
-        --foreground: oklch(0.178 0.000 0);
-        --surface: oklch(1.000 0.000 0);
+        --background: oklch(0.97 0 0);
+        --foreground: oklch(0.178 0 0);
+        --surface: oklch(1 0 0);
 
-        --muted: oklch(0.970 0.000 0);
-        --muted-foreground: oklch(0.689 0.000 0);
-        --primary: oklch(0.213 0.000 0);
-        --primary-foreground: oklch(1.000 0.000 0);
+        --muted: oklch(0.97 0 0);
+        --muted-foreground: oklch(0.689 0 0);
+        --primary: oklch(0.213 0 0);
+        --primary-foreground: oklch(1 0 0);
 
-        --secondary: oklch(1.000 0.000 0);
-        --secondary-foreground: oklch(0.178 0.000 0);
+        --secondary: oklch(1 0 0);
+        --secondary-foreground: oklch(0.178 0 0);
 
-        --tertiary: oklch(0.970 0.000 0);
-        --tertiary-foreground: oklch(0.178 0.000 0);
+        --tertiary: oklch(0.97 0 0);
+        --tertiary-foreground: oklch(0.178 0 0);
 
         --focus: oklch(0.789 0.154 211.53);
+
+        --button-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
+        --button-shadow-secondary: 0 0 0 1px rgba(0, 0, 0, 0.08);
     }
 
     @media (prefers-color-scheme: dark) {
-        :root, .dark, [data-theme="dark"] {
-            --background: oklch(0.235 0.000 0);
-            --foreground: oklch(1.000 0.000 0);
-            --surface: oklch(0.213 0.000 0);
+        html:not([data-theme]) {
+            --background: oklch(0.235 0 0);
+            --foreground: oklch(1 0 0);
+            --surface: oklch(0.213 0 0);
 
-            --muted: oklch(0.252 0.000 0);
-            --muted-foreground: oklch(0.375 0.000 0);
+            --muted: oklch(0.252 0 0);
+            --muted-foreground: oklch(0.375 0 0);
 
-            --primary: oklch(1.000 0.000 0);
-            --primary-foreground: oklch(0.213 0.000 0);
+            --primary: oklch(1 0 0);
+            --primary-foreground: oklch(0.213 0 0);
 
-            --secondary: oklch(0.213 0.000 0);
-            --secondary-foreground: oklch(1.000 0.000 0);
+            --secondary: oklch(0.213 0 0);
+            --secondary-foreground: oklch(1 0 0);
 
-            --tertiary: oklch(0.252 0.000 0);
-            --tertiary-foreground: oklch(1.000 0.000 0);
+            --tertiary: oklch(0.252 0 0);
+            --tertiary-foreground: oklch(1 0 0);
+
+            --button-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.04);
+            --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
+    }
+
+    .dark,
+    [data-theme="dark"] {
+        --background: oklch(0.235 0 0);
+        --foreground: oklch(1 0 0);
+        --surface: oklch(0.213 0 0);
+
+        --muted: oklch(0.252 0 0);
+        --muted-foreground: oklch(0.375 0 0);
+
+        --primary: oklch(1 0 0);
+        --primary-foreground: oklch(0.213 0 0);
+
+        --secondary: oklch(0.213 0 0);
+        --secondary-foreground: oklch(1 0 0);
+
+        --tertiary: oklch(0.252 0 0);
+        --tertiary-foreground: oklch(1 0 0);
+
+        --button-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.04);
+        --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 }
 
@@ -58,14 +86,33 @@
 
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
+    --color-primary-hover: color-mix(
+        in oklab,
+        var(--color-primary) 90%,
+        var(--color-primary-foreground) 10%
+    );
 
     --color-secondary: var(--secondary);
     --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary-hover: color-mix(
+        in oklab,
+        var(--color-secondary) 96%,
+        var(--color-secondary-foreground) 4%
+    );
 
     --color-tertiary: var(--tertiary);
     --color-tertiary-foreground: var(--tertiary-foreground);
-    
+    --color-tertiary-hover: color-mix(
+        in oklab,
+        var(--color-tertiary) 96%,
+        var(--color-tertiary-foreground) 4%
+    );
+
     --color-focus: var(--focus);
+
+    --shadow-button: var(--button-shadow);
+    --shadow-button-secondary:
+        var(--button-shadow), var(--button-shadow-secondary);
 }
 
 .debug {
