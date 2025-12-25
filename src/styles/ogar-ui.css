@@ -24,10 +24,12 @@
         --tertiary: oklch(0.97 0 0);
         --tertiary-foreground: oklch(0.178 0 0);
 
+        --border: oklch(0.94 0 0);
+
         --focus: oklch(0.789 0.154 211.53);
 
-        --button-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
-        --button-shadow-secondary: 0 0 0 1px rgba(0, 0, 0, 0.08);
+        --button-shadow-primary: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+        --button-shadow-secondary: 0 2px 2px 0 rgba(25, 25, 25, 0.04);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -48,7 +50,9 @@
             --tertiary: oklch(0.252 0 0);
             --tertiary-foreground: oklch(1 0 0);
 
-            --button-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.04);
+            --border: oklch(0.289 0 0);
+
+            --button-shadow-primary: 0 2px 2px 0 rgba(255, 255, 255, 0.1);
             --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
     }
@@ -71,7 +75,9 @@
         --tertiary: oklch(0.252 0 0);
         --tertiary-foreground: oklch(1 0 0);
 
-        --button-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.04);
+        --border: oklch(0.289 0 0);
+
+        --button-shadow-primary: 0 2px 2px 0 rgba(255, 255, 255, 0.1);
         --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 }
@@ -110,9 +116,8 @@
 
     --color-focus: var(--focus);
 
-    --shadow-button: var(--button-shadow);
-    --shadow-button-secondary:
-        var(--button-shadow), var(--button-shadow-secondary);
+    --shadow-button-primary: var(--button-shadow-primary);
+    --shadow-button-secondary: var(--button-shadow-secondary);
 }
 
 .debug {

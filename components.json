@@ -17,6 +17,8 @@
       "lib": "@/lib",
       "hooks": "@/hooks"
     },
-    "registries": {}
+    "registries": {
+      "@ogar-ui": "http://localhost:4321/r/ogar-ui.{name}.json"
+    }
   }
   
