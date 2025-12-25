@@ -1,10 +1,12 @@
 ---
-import MainLayout from '@/layouts/main-layout.astro'
-import Card from '@/components/Card.astro'
+import Card from "@/components/home/card.astro";
+import Links from "@/components/home/links.astro";
+import MainLayout from "@/layouts/main-layout.astro";
 ---
 
 <MainLayout>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-6 max-w-170">
         <Card />
+        <Links />
     </div>
 </MainLayout>

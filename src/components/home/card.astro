@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from "astro:assets";
 
-import Avatar from '../assets/me.webp'
+import Avatar from "../../assets/me.webp";
 ---
 
 <style>
@@ -19,7 +19,7 @@ import Avatar from '../assets/me.webp'
     }
 </style>
 
-<section class="card-grid gap-3 sm:gap-4 max-w-160">
+<section class="card-grid gap-3 sm:gap-4 w-full">
     <Image
         alt="Michał Mackowiak"
         src={Avatar}
@@ -28,7 +28,7 @@ import Avatar from '../assets/me.webp'
         layout="constrained"
         loading="eager"
     />
-    <div style="grid-area: title">
+    <div style="grid-area: title" class="mt-3 sm:mt-1">
         <h1 class="text-2xl font-semibold">Michał Mackowiak</h1>
         <div class="flex gap-4 text-foreground/70 text-xs">
             <p>@chemipil</p>
@@ -37,10 +37,9 @@ import Avatar from '../assets/me.webp'
             </p>
         </div>
     </div>
-    <p style="grid-area: content">
+    <p style="grid-area: content" class="text-sm">
         Web developer building yet another button component, wannabe landscape
         photographer still figuring out what the camera buttons do, traveler
         trying to see the world.<br /> Powered by good coffee and late-night gaming.
     </p>
 </section>
-

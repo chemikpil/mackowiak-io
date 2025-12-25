@@ -1,0 +1,49 @@
+---
+import {
+	Camera01Icon,
+	ComputerIcon,
+	GameController03Icon,
+	Github01Icon,
+	InstagramIcon,
+	LinkSquare02Icon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+
+import { Link } from "@/components/ui/link";
+---
+
+<ul class="flex flex-wrap gap-2">
+    <li>
+        <Link variant="secondary" href="/">
+            <HugeiconsIcon icon={Camera01Icon} size={16} />
+            Photo Attempts
+        </Link>
+    </li>
+    <li>
+        <Link variant="secondary" href="/">
+            <HugeiconsIcon icon={ComputerIcon} size={16} />
+            Job Journey
+        </Link>
+    </li>
+    <li>
+        <Link variant="secondary" href="https://www.instagram.com/chemikpil/" target="_blank">
+            <HugeiconsIcon icon={InstagramIcon} size={16} />
+            Instagram
+            <HugeiconsIcon icon={LinkSquare02Icon} size={10} className="text-muted-foreground" />
+        </Link>
+    </li>
+    <li>
+        <Link variant="secondary" href="https://github.com/chemipil" target="_blank">
+            <HugeiconsIcon icon={Github01Icon} size={16} />
+            GitHub
+            <HugeiconsIcon icon={LinkSquare02Icon} size={10} className="text-muted-foreground" />
+        </Link>
+    </li>
+    <li>
+        <Link variant="secondary" href="https://steamcommunity.com/id/chemikpil/" target="_blank">
+            <HugeiconsIcon icon={GameController03Icon} size={16} />
+            Steam
+            <HugeiconsIcon icon={LinkSquare02Icon} size={10} className="text-muted-foreground" />
+        </Link>
+    </li>
+</ul>
