@@ -1,0 +1,27 @@
+---
+import { InstagramIcon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Link } from "@/components/ui/link";
+import MainLayout from "@/layouts/main-layout.astro";
+---
+
+<MainLayout>
+    <div class="flex flex-col gap-6 max-w-104 w-full">
+        <header class="flex gap-4 justify-between items-center ">
+            <h1 class="text-2xl font-semibold">Recent photos</h1>
+            <Link variant="tertiary" href="https://www.instagram.com/chemikpil/" target="_blank">
+                <HugeiconsIcon icon={InstagramIcon} size={16} />
+                Instagram
+            </Link>
+        </header>
+        <section class="grid grid-cols-3 grid-rows-2 gap-4 w-full relative">
+            <div class="rounded-xl bg-muted aspect-4/5" />
+            <div class="rounded-xl bg-muted aspect-17/10 col-span-2" />
+            <div class="rounded-xl bg-muted aspect-17/10 col-span-2" />
+            <div class="rounded-xl bg-muted aspect-4/5" />
+            <div class="text-center absolute inset-0 flex place-items-center justify-center">
+                <p class="p-4 rounded-xl text-center w-[50%] bg-surface">Soon ...</p>
+            </div>
+        </section>
+    </div>
+</MainLayout>   
