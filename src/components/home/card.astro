@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import Avatar from "../../assets/me.webp";
+import avatar from "@/assets/me.webp";
 ---
 
 <style>
@@ -22,7 +22,7 @@ import Avatar from "../../assets/me.webp";
 <section class="card-grid gap-3 sm:gap-4 w-full">
     <Image
         alt="Michał Mackowiak"
-        src={Avatar}
+        src={avatar}
         class="size-20 sm:size-40 aspect-square rounded-2xl bg-background sm:mr-2"
         style="grid-area: avatar"
         layout="constrained"

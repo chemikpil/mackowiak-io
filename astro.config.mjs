@@ -11,7 +11,12 @@ export default defineConfig({
     mode: 'standalone'
   }),
   integrations: [react()],
-
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/noop',
+      config: {}
+    }
+  },
   vite: {
     plugins: [tailwindcss()]
   }
