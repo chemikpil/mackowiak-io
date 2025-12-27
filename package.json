@@ -16,7 +16,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.0",
+    "astro": "^5.16.6",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "react": "^19.2.0",
     "react-aria-components": "^1.14.0",
