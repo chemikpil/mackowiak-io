@@ -18,6 +18,8 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.6",
+    "motion": "^12.23.26",
+    "motion-plus": "https://api.motion.dev/registry.tgz?package=motion-plus&version=2.0.2",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "react": "^19.2.0",
     "react-aria-components": "^1.14.0",
