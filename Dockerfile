@@ -1,42 +1,41 @@
-Stage 1: Build the Application
-# We use node:22-slim as the base for building and installing dependencies.
-FROM node:22-slim AS build
+# Build stage
+FROM node:20-alpine AS builder
 
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copy package.json and package-lock.json first to leverage Docker caching.
-# If these files don't change, subsequent builds can skip 'npm install'.
-COPY package*.json ./
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
-# Copy the rest of the application source code
+# Copy source code
 COPY . .
 
-# Stage 2: Create the Final Production Image
-# We use node:22-slim as a minimal runtime image.
-FROM node:22-slim
+# Build the Astro site
+RUN pnpm build
 
-# Set the working directory
-WORKDIR /usr/src/app
+# Production stage
+FROM node:20-alpine AS runner
 
-# Copy the node_modules and built application files from the 'build' stage
-COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/package*.json ./
-COPY --from=build /usr/src/app .
+WORKDIR /app
 
-# Expose the port your app runs on
-ENV PORT=8080
-EXPOSE $PORT
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Run the application using the non-root user (recommended for security)
-USER node
+# Install serve globally to serve static files
+RUN npm install -g serve
 
-# Define the command to start your application
-CMD [ "node", "index.js", "pnpm" ]
+# Copy built files from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+
+# Expose port (fly.io uses PORT env variable, but serve defaults to 3000)
+EXPOSE 3000
+
+# Start the server - serve from dist/client if it exists (SSR build), otherwise from dist (static build)
+CMD ["sh", "-c", "if [ -d dist/client ]; then serve -s dist/client -l ${PORT:-3000}; else serve -s dist -l ${PORT:-3000}; fi"]
+
