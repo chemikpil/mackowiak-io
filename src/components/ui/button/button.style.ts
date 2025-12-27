@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 
 export const buttonVariants = tv({
     base: [
-        'relative isolate shrink-0 whitespace-nowrap inline-flex cursor-pointer touch-none place-items-center justify-center gap-2 rounded-xl', 
+        'relative isolate shrink-0 whitespace-nowrap  inline-flex cursor-pointer touch-none place-items-center justify-center gap-2 rounded-xl', 
         'active:scale-96 data-pressed:scale-96',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus',
         'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none aria-disabled:opacity-50 aria-disabled:cursor-not-allowed aria-disabled:pointer-events-none',
