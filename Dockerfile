@@ -26,16 +26,21 @@ WORKDIR /app
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Install serve globally to serve static files
-RUN npm install -g serve
+# Copy package files for production dependencies
+COPY package.json pnpm-lock.yaml ./
+
+# Install only production dependencies
+RUN pnpm install --frozen-lockfile --prod
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/public ./public
 
-# Expose port (fly.io uses PORT env variable, but serve defaults to 3000)
+# Expose port (fly.io uses PORT env variable)
 EXPOSE 3000
 
-# Start the server - serve from dist/client if it exists (SSR build), otherwise from dist (static build)
-CMD ["sh", "-c", "if [ -d dist/client ]; then serve -s dist/client -l ${PORT:-3000}; else serve -s dist -l ${PORT:-3000}; fi"]
+# Start the Node.js server for Astro SSR
+ENV HOST=0.0.0.0
+ENV PORT=3000
+CMD ["node", "./dist/server/entry.mjs"]
 
