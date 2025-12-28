@@ -12,7 +12,7 @@ function Navigation() {
 	const { currentPage, totalPages, nextPage, prevPage, gotoPage } =
 		useMotionCarousel();
 
-	return (
+	return totalPages > 1 ? (
 		<div className="flex place-items-center gap-4 mx-auto px-4 py-3 bg-muted rounded-2xl w-fit">
 			<Button
 				variant="ghost"
@@ -48,21 +48,24 @@ function Navigation() {
 				<HugeiconsIcon icon={ArrowRight01Icon} size={24} />
 			</Button>
 		</div>
-	);
+	) : null;
 }
 
 type SlideItem = {
 	name: string;
 	className: string;
+	image: sring;
 };
 
 function Slide({ items }: { items: SlideItem[] }) {
 	return (
-		<section className="grid grid-cols-3 grid-rows-2 gap-4 w-full relative">
+		<section className="grid grid-cols-3 grid-rows-2 gap-4 w-full relative overflow-hidden">
 			{items.map((item) => (
-				<div
+				<img
+					src={item.image}
 					key={item.name}
-					className={`rounded-xl bg-muted ${item.className}`}
+					alt={item.name}
+					className={`object-cover rounded-xl ${item.className}`}
 				/>
 			))}
 		</section>
@@ -72,25 +75,33 @@ function Slide({ items }: { items: SlideItem[] }) {
 export function Carousel() {
 	let slides = [
 		[
-			{ name: "1", className: "aspect-4/5" },
-			{ name: "2", className: "aspect-17/10 col-span-2" },
-			{ name: "3", className: "aspect-17/10 col-span-2" },
-			{ name: "4", className: "aspect-4/5" },
+			{
+				name: "Calpe, Spain, Penyal d'Ifach Seagull",
+				className: "aspect-4/5",
+				image: "/photography/DSC07533.webp",
+			},
+			{
+				name: "São Miguel, Azores, Lagoa do Pau Pique",
+				className: "aspect-17/10 col-span-2",
+				image: "/photography/DJI_0421-HDR.webp",
+			},
+			{
+				name: "São Miguel, Azores, Boca de Inferno",
+				className: "aspect-17/10 col-span-2",
+				image: "/photography/DSC00475-HDR-Pano.webp",
+			},
+			{
+				name: "Karkonosze, Poland, Śnieżka",
+				className: "aspect-4/5",
+				image: "/photography/DSC03796.webp",
+			},
 		],
 		[
-			{ name: "1", className: "aspect-4/5" },
-			{ name: "2", className: "aspect-4/5" },
-			{ name: "3", className: "aspect-4/5" },
-			{ name: "4", className: "aspect-4/5" },
-			{ name: "5", className: "aspect-4/5" },
-			{ name: "6", className: "aspect-4/5" },
-		],
-		[
-			{ name: "1", className: "aspect-4/5" },
-			{ name: "2", className: "aspect-17/10 col-span-2" },
-			{ name: "4", className: "aspect-4/5" },
-			{ name: "5", className: "aspect-4/5" },
-			{ name: "6", className: "aspect-4/5" },
+			{
+				name: "Berlin, Germany, Sunrise",
+				className: "aspect-4/5",
+				image: "/photography/2020-berlin.webp",
+			},
 		],
 	];
 
