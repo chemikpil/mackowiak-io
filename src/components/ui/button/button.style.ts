@@ -36,7 +36,8 @@ export const buttonVariants = tv({
                 'text-foreground',
                 'hover:bg-tertiary-hover data-hovered:bg-tertiary-hover',
                 'active:bg-tertiary-hover data-pressed:bg-tertiary-hover',
-                '[&>span[data-spinner]]:text-foreground'
+                '[&>span[data-spinner]]:text-foreground',
+                'disabled:opacity-25'
             ]
         },
         size: {
