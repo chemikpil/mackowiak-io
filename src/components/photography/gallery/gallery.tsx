@@ -1,41 +1,44 @@
-import { Carousel as MotionCarousel } from "motion-plus/react";
-import { twMerge } from "tailwind-merge";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import { useState } from "react";
 
 import { slides } from "@/db/photos";
-import { Navigation } from "./navigation";
-import { Photo } from "./photo";
+import { useEscToClose } from "@/hooks/use-esc-to-close";
+import { Carousel } from "./carousel";
+import { GalleryProvider } from "./gallery-context";
 
-type SlideItem = {
-	name: string;
-	className: string;
-	image: string;
-};
-
-function Slide({ items }: { items: SlideItem[] }) {
-	return (
-		<section className="grid grid-cols-3 grid-rows-2 gap-4 w-full relative overflow-hidden">
-			{items.map((item) => (
-				<li
-					key={item.name}
-					className={twMerge("rounded-xl overflow-hidden", item.className)}
-				>
-					<Photo {...item} />
-				</li>
-			))}
-		</section>
-	);
-}
+const baseZIndex = 2000;
+const zStack = ["overlay", "thumbnail", "image"];
 
 export function Gallery() {
+	let [activeIndex, setActiveIndex] = useState<number | false>(false);
+
+	useEscToClose(activeIndex !== false, () => setActiveIndex(false));
+
+	let activeImage = slides.flat().find((item) => item.id === activeIndex);
+	console.log(activeImage);
+
 	return (
-		<MotionCarousel
-			className="w-full relative [&_.ticker-item]:w-full"
-			items={slides.map((slide, index) => <Slide key={index} items={slide} />)}
-			gap={16}
-			snap="page"
-			loop={false}
+		<GalleryProvider
+			value={{ baseZIndex, zStack, slides, activeIndex, setActiveIndex }}
 		>
-			<Navigation />
-		</MotionCarousel>
+			<MotionConfig
+				transition={{ type: "spring", bounce: 0.1, visualDuration: 0.3 }}
+			>
+				<Carousel />
+				<AnimatePresence>
+					{activeIndex !== false && (
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							key="overlay"
+							onClick={() => setActiveIndex(false)}
+							className="fixed inset-0 bg-background/90 flex pointer-events-none will-change-[opacity]"
+							style={{ zIndex: baseZIndex + zStack.indexOf("overlay") }}
+						/>
+					)}
+				</AnimatePresence>
+			</MotionConfig>
+		</GalleryProvider>
 	);
 }

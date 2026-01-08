@@ -1,12 +1,10 @@
-type Photo = {
-	name: string;
-	image: string;
-};
+import { motion } from "motion/react";
 
-export function Photo({ name, image }: Photo) {
+export function Photo({ name, src }: { name: string; src: string }) {
 	return (
-		<img
-			src={image}
+		<motion.img
+			layoutId={`${name}-image`}
+			src={src}
 			alt={name}
 			loading="lazy"
 			className="size-full object-cover"
