@@ -1,7 +1,7 @@
 ---
 import { InstagramIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Carousel } from "@/components/carousel";
+import { Gallery } from "@/components/photography/gallery/gallery";
 import { Link } from "@/components/ui/link";
 import MainLayout from "@/layouts/main-layout.astro";
 ---
@@ -15,6 +15,6 @@ import MainLayout from "@/layouts/main-layout.astro";
                 Instagram
             </Link>
         </header>
-        <Carousel client:load />
+        <Gallery client:load />
     </article>
 </MainLayout>   

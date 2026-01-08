@@ -16,7 +16,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
+      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue", "**/*.tsx"],
       "linter": {
         "rules": {
           "style": {
@@ -26,6 +26,10 @@
           "correctness": {
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
+          },
+          "suspicious": {
+            "noArrayIndexKey": "off",
+            "noExplicitAny": "off"
           }
         }
       }
