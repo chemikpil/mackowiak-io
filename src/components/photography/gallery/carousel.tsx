@@ -13,7 +13,7 @@ interface ThumbnailProps {
 }
 
 function Thumbnail({ id, src, name, aspectRatio }: ThumbnailProps) {
-	let { baseZIndex, zStack, setActiveIndex } = useGalleryContext();
+	let { baseZIndex, zStack, setActiveIndex, activeIndex } = useGalleryContext();
 	let zIndex = useMotionValue(0);
 	let activeZIndex = baseZIndex + zStack.indexOf("thumbnail");
 

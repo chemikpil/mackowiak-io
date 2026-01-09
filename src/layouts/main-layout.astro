@@ -25,7 +25,7 @@ const { title = "Michał Mackowiak" } = Astro.props;
     </head>
     <body class="bg-surface">
         <div class="flex flex-col text-foreground h-full">
-            <header class="flex place-items-center justify-center h-24">
+            <header class="flex place-items-center justify-center h-24 min-h-24">
                 <a
                     href="/"
                     aria-label="Home"
@@ -38,7 +38,7 @@ const { title = "Michał Mackowiak" } = Astro.props;
                 <slot />
             </main>
             <footer
-                class="flex place-items-center justify-center h-24 text-center text-sm text-muted-foreground relative z-2001"
+                class="flex place-items-center justify-center h-24 min-h-24 text-center text-sm text-muted-foreground relative z-2001"
             >
                 © Michał Maćkowiak
             </footer>

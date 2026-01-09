@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { frame, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
 import { useGalleryContext } from "./gallery-context";
@@ -19,29 +19,47 @@ export function SinglePhoto({
 	const { baseZIndex, zStack } = useGalleryContext();
 
 	return (
-		<div
-			onClick={onClick}
-			className="fixed inset-0 flex justify-center place-items-center"
+		<motion.div
+			key={`${name}-wrapper`}
+			onTap={() => {
+				frame.postRender(() => {
+					onClick();
+				});
+			}}
+			className="fixed inset-0 flex justify-center place-items-center py-24 px-10"
 			style={{ zIndex: baseZIndex + zStack.indexOf("image") }}
 		>
 			<motion.div
 				layoutId={name}
 				initial={{
 					borderRadius: 12,
+					opacity: 1,
 				}}
 				animate={{
 					borderRadius: 32,
+					opacity: 1,
 				}}
 				exit={{
 					borderRadius: 12,
+					opacity: 0,
+					transition: {
+						delay: 0.28,
+					},
 				}}
 				className={twMerge(
-					"opacity-100! overflow-hidden max-w-[80vw] max-h-[80vh] will-change-[transform,opacity] rounded-4xl",
+					"overflow-hidden will-change-[transform,opacity] rounded-4xl",
+					"portrait:w-full portrait:h-auto landscape:h-full landscape:w-auto",
 				)}
 				style={{
-					aspectRatio: `${aspectRatio} auto`,
-					height: "auto",
-					width: "100%",
+					aspectRatio,
+					maxWidth:
+						aspectRatio === "17/10"
+							? "calc(100vw * 17 / 10)"
+							: "calc(100vw * 4 / 5)",
+					maxHeight:
+						aspectRatio === "17/10"
+							? "calc(100vw * 10 / 17)"
+							: "calc(100vw * 5 / 4)",
 				}}
 			>
 				<motion.img
@@ -52,6 +70,6 @@ export function SinglePhoto({
 					style={{ zIndex: baseZIndex + zStack.indexOf("image") }}
 				/>
 			</motion.div>
-		</div>
+		</motion.div>
 	);
 }
