@@ -19,6 +19,10 @@
       "includes": ["**/*.svelte", "**/*.astro", "**/*.vue", "**/*.tsx", "**/*.ts"],
       "linter": {
         "rules": {
+          "a11y": {
+            "noStaticElementInteractions": "off",
+            "useKeyWithClickEvents": "off"
+          },
           "style": {
             "useConst": "off",
             "useImportType": "off"

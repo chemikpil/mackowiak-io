@@ -4,38 +4,68 @@ import { twMerge } from "tailwind-merge";
 
 import { useGalleryContext } from "./gallery-context";
 import { Navigation } from "./navigation";
-import { Photo } from "./photo";
 
-function Slide({ page = 0 }: { page: number }) {
-	let { slides, baseZIndex, zStack, setActiveIndex } = useGalleryContext();
-	let items = slides[page];
+interface ThumbnailProps {
+	id: number;
+	src: string;
+	name: string;
+	aspectRatio: string;
+}
+
+function Thumbnail({ id, src, name, aspectRatio }: ThumbnailProps) {
+	let { baseZIndex, zStack, setActiveIndex } = useGalleryContext();
 	let zIndex = useMotionValue(0);
-	let activeZIndex = baseZIndex + zStack.indexOf("image");
+	let activeZIndex = baseZIndex + zStack.indexOf("thumbnail");
 
 	return (
-		<section className="grid grid-cols-3 grid-rows-2 gap-4 w-full relative overflow-hidden cursor-pointer">
+		<motion.li
+			key={src}
+			onTap={() => {
+				frame.postRender(() => {
+					setActiveIndex(id);
+					zIndex.set(activeZIndex);
+				});
+			}}
+			layoutId={name}
+			onLayoutAnimationStart={() => zIndex.set(activeZIndex)}
+			onLayoutAnimationComplete={() => zIndex.set(0)}
+			className={twMerge(
+				"rounded-xl overflow-hidden focus-visible:outline-none bg-muted",
+				"flex justify-center place-items-center",
+				"will-change-[transform,opacity] touch-none select-none",
+				aspectRatio === "17/10" ? "col-span-2 aspect-17/10" : "aspect-4/5",
+			)}
+			style={{
+				zIndex,
+				height: aspectRatio === "17/10" ? "auto" : "100%",
+				width: aspectRatio === "17/10" ? "100%" : "auto",
+			}}
+		>
+			<motion.img
+				layoutId={`${name}-image`}
+				src={src}
+				alt={name}
+				className="size-full object-cover"
+			/>
+		</motion.li>
+	);
+}
+
+function Slide({ page = 0 }: { page: number }) {
+	let { slides } = useGalleryContext();
+	let items = slides[page];
+
+	return (
+		<section
+			className={twMerge(
+				"grid grid-cols-3 grid-rows-2 gap-4 w-full cursor-pointer",
+			)}
+			style={{
+				zIndex: page === 0 ? 2000 : -10,
+			}}
+		>
 			{items.map((item) => (
-				<motion.li
-					key={item.name}
-					onTap={() => {
-						frame.postRender(() => {
-							setActiveIndex(item.id);
-							zIndex.set(activeZIndex);
-						});
-					}}
-					layoutId={item.name}
-					onLayoutAnimationStart={() => zIndex.set(activeZIndex)}
-					onLayoutAnimationComplete={() => zIndex.set(0)}
-					className={twMerge(
-						"rounded-xl overflow-hidden focus-visible:outline-none relative bg-muted",
-						"flex justify-center place-items-center",
-						"will-change-[transform,opacity] touch-none select-none",
-						item.className,
-					)}
-					style={{ zIndex }}
-				>
-					<Photo {...item} />
-				</motion.li>
+				<Thumbnail key={item.src} {...item} />
 			))}
 		</section>
 	);
@@ -51,6 +81,7 @@ export function Carousel() {
 			gap={16}
 			snap="page"
 			loop={false}
+			overflow={true}
 		>
 			<Navigation />
 		</MotionCarousel>

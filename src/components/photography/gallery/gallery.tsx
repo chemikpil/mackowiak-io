@@ -5,6 +5,7 @@ import { slides } from "@/db/photos";
 import { useEscToClose } from "@/hooks/use-esc-to-close";
 import { Carousel } from "./carousel";
 import { GalleryProvider } from "./gallery-context";
+import { SinglePhoto } from "./single-photo";
 
 const baseZIndex = 2000;
 const zStack = ["overlay", "thumbnail", "image"];
@@ -15,14 +16,17 @@ export function Gallery() {
 	useEscToClose(activeIndex !== false, () => setActiveIndex(false));
 
 	let activeImage = slides.flat().find((item) => item.id === activeIndex);
-	console.log(activeImage);
 
 	return (
 		<GalleryProvider
 			value={{ baseZIndex, zStack, slides, activeIndex, setActiveIndex }}
 		>
 			<MotionConfig
-				transition={{ type: "spring", bounce: 0.1, visualDuration: 0.3 }}
+				transition={{
+					type: "spring",
+					bounce: 0.1,
+					visualDuration: 1,
+				}}
 			>
 				<Carousel />
 				<AnimatePresence>
@@ -35,6 +39,16 @@ export function Gallery() {
 							onClick={() => setActiveIndex(false)}
 							className="fixed inset-0 bg-background/90 flex pointer-events-none will-change-[opacity]"
 							style={{ zIndex: baseZIndex + zStack.indexOf("overlay") }}
+						/>
+					)}
+
+					{activeIndex !== false && (
+						<SinglePhoto
+							key="image"
+							name={activeImage?.name ?? ""}
+							src={activeImage?.src ?? ""}
+							aspectRatio={activeImage?.aspectRatio ?? "4/5"}
+							onClick={() => setActiveIndex(false)}
 						/>
 					)}
 				</AnimatePresence>
