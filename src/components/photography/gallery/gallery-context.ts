@@ -7,6 +7,8 @@ export const [GalleryProvider, useGalleryContext] = createContext<{
 	slides: typeof slides;
     activeIndex: number | false;
     setActiveIndex: (index: number | false) => void;
+    currentPage: number;
+    setCurrentPage: (page: number) => void;
 }>({
     name: "GalleryContext",
     strict: true,

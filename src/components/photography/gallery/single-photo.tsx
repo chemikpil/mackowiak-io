@@ -26,13 +26,22 @@ export function SinglePhoto({
 		>
 			<motion.div
 				layoutId={name}
+				initial={{
+					borderRadius: 12,
+				}}
+				animate={{
+					borderRadius: 32,
+				}}
+				exit={{
+					borderRadius: 12,
+				}}
 				className={twMerge(
-					"overflow-hidden max-w-[80vw] max-h-[80vh] will-change-[transform,opacity] rounded-4xl",
+					"opacity-100! overflow-hidden max-w-[80vw] max-h-[80vh] will-change-[transform,opacity] rounded-4xl",
 				)}
 				style={{
-					aspectRatio: aspectRatio,
-					height: aspectRatio === "17/10" ? "auto" : "100%",
-					width: aspectRatio === "17/10" ? "100%" : "auto",
+					aspectRatio: `${aspectRatio} auto`,
+					height: "auto",
+					width: "100%",
 				}}
 			>
 				<motion.img
@@ -40,6 +49,7 @@ export function SinglePhoto({
 					src={src}
 					alt={name}
 					className="size-full object-cover"
+					style={{ zIndex: baseZIndex + zStack.indexOf("image") }}
 				/>
 			</motion.div>
 		</div>

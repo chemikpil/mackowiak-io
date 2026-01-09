@@ -12,6 +12,7 @@ const zStack = ["overlay", "thumbnail", "image"];
 
 export function Gallery() {
 	let [activeIndex, setActiveIndex] = useState<number | false>(false);
+	let [currentPage, setCurrentPage] = useState(0);
 
 	useEscToClose(activeIndex !== false, () => setActiveIndex(false));
 
@@ -19,13 +20,21 @@ export function Gallery() {
 
 	return (
 		<GalleryProvider
-			value={{ baseZIndex, zStack, slides, activeIndex, setActiveIndex }}
+			value={{
+				baseZIndex,
+				zStack,
+				slides,
+				activeIndex,
+				setActiveIndex,
+				currentPage,
+				setCurrentPage,
+			}}
 		>
 			<MotionConfig
 				transition={{
 					type: "spring",
 					bounce: 0.1,
-					visualDuration: 1,
+					visualDuration: 0.3,
 				}}
 			>
 				<Carousel />

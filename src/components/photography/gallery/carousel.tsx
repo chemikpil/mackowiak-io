@@ -30,7 +30,7 @@ function Thumbnail({ id, src, name, aspectRatio }: ThumbnailProps) {
 			onLayoutAnimationStart={() => zIndex.set(activeZIndex)}
 			onLayoutAnimationComplete={() => zIndex.set(0)}
 			className={twMerge(
-				"rounded-xl overflow-hidden focus-visible:outline-none bg-muted",
+				"overflow-hidden focus-visible:outline-none bg-muted",
 				"flex justify-center place-items-center",
 				"will-change-[transform,opacity] touch-none select-none",
 				aspectRatio === "17/10" ? "col-span-2 aspect-17/10" : "aspect-4/5",
@@ -39,6 +39,7 @@ function Thumbnail({ id, src, name, aspectRatio }: ThumbnailProps) {
 				zIndex,
 				height: aspectRatio === "17/10" ? "auto" : "100%",
 				width: aspectRatio === "17/10" ? "100%" : "auto",
+				borderRadius: 12,
 			}}
 		>
 			<motion.img
@@ -52,7 +53,7 @@ function Thumbnail({ id, src, name, aspectRatio }: ThumbnailProps) {
 }
 
 function Slide({ page = 0 }: { page: number }) {
-	let { slides } = useGalleryContext();
+	let { slides, currentPage } = useGalleryContext();
 	let items = slides[page];
 
 	return (
@@ -61,7 +62,7 @@ function Slide({ page = 0 }: { page: number }) {
 				"grid grid-cols-3 grid-rows-2 gap-4 w-full cursor-pointer",
 			)}
 			style={{
-				zIndex: page === 0 ? 2000 : -10,
+				pointerEvents: page === currentPage ? "auto" : "none",
 			}}
 		>
 			{items.map((item) => (
@@ -76,12 +77,11 @@ export function Carousel() {
 
 	return (
 		<MotionCarousel
-			className="w-full relative [&_.ticker-item]:w-full"
+			className="w-full relative [&_.ticker-item]:w-full scrollbar-hide"
 			items={slides.map((_, index) => <Slide key={index} page={index} />)}
 			gap={16}
 			snap="page"
 			loop={false}
-			overflow={true}
 		>
 			<Navigation />
 		</MotionCarousel>

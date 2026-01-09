@@ -2,12 +2,19 @@ import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { motion } from "motion/react";
 import { useCarousel as useMotionCarousel } from "motion-plus/react";
+import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
+import { useGalleryContext } from "./gallery-context";
 
 export function Navigation() {
 	const { currentPage, totalPages, nextPage, prevPage, gotoPage } =
 		useMotionCarousel();
+	const { setCurrentPage } = useGalleryContext();
+
+	useEffect(() => {
+		setCurrentPage(currentPage);
+	}, [currentPage, setCurrentPage]);
 
 	return totalPages > 1 ? (
 		<div className="flex place-items-center gap-4 mx-auto px-4 py-3 bg-muted rounded-2xl w-fit">
