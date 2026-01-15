@@ -16,7 +16,8 @@ export function SinglePhoto({
 	aspectRatio,
 	onClick,
 }: SinglePhotoProps) {
-	const { baseZIndex, zStack } = useGalleryContext();
+	const { baseZIndex, zStack, setActiveIndex, activeIndex } =
+		useGalleryContext();
 
 	return (
 		<motion.div
