@@ -2,6 +2,8 @@
 
 @import "./ogar-ui.css";
 
+@plugin "tailwindcss-animate";
+
 @utility ogar-ring-* {
     --tw-ring-color: var(--color-focus);
     --tw-ring-offset-color: --value(--color-*);

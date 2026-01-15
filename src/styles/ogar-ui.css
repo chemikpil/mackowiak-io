@@ -24,6 +24,9 @@
         --tertiary: oklch(0.97 0 0);
         --tertiary-foreground: oklch(0.178 0 0);
 
+        --accent: oklch(0.881 0.176 93.5);
+        --accent-foreground: oklch(0.178 0 0);
+
         --border: oklch(0.94 0 0);
 
         --focus: oklch(74.6% 0.16 232.661);
@@ -112,6 +115,14 @@
         in oklab,
         var(--color-tertiary) 96%,
         var(--color-tertiary-foreground) 4%
+    );
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent-hover: color-mix(
+        in oklab,
+        var(--color-accent) 90%,
+        var(--color-accent-foreground) 10%
     );
 
     --color-border: var(--border);

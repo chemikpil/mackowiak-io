@@ -30,6 +30,7 @@
     "tailwindcss-react-aria-components": "^2.0.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.10"
+    "@biomejs/biome": "^2.3.10",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

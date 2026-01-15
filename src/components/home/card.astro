@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 
 import avatar from "@/assets/me.webp";
+
+import { VerifiedIcon } from "./verified-icon";
 ---
 
 <style>
@@ -29,7 +31,10 @@ import avatar from "@/assets/me.webp";
         loading="eager"
     />
     <div style="grid-area: title" class="mt-3.5 sm:mt-1">
-        <h1 class="text-2xl font-semibold">Michał Maćkowiak</h1>
+        <div class="flex gap-1 place-items-center">
+            <h1 class="text-2xl font-semibold">Michał Maćkowiak</h1>
+            <VerifiedIcon className="text-accent" client:load />
+        </div>
         <div class="flex gap-4 text-foreground/70 text-xs">
             <p>@chemikpil</p>
             <p class="flex gap-1">
