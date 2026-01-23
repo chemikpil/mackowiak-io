@@ -17,14 +17,15 @@ const { title = "Michał Mackowiak" } = Astro.props;
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
+        <meta name="theme-color" content="#000000" />
         <title>{title}</title>
         <meta
             name="description"
             content="Web developer building yet another button component, wannabe landscape photographer still figuring out what the camera buttons do, traveler trying to see the world. Powered by good coffee and late-night gaming."
         />
     </head>
-    <body class="bg-surface">
-        <div class="flex flex-col text-foreground h-full">
+    <body class="bg-background p-2">
+        <div class="flex flex-col text-foreground h-full bg-surface rounded-[40px] md:rounded-2xl">
             <header class="flex place-items-center justify-center h-24 min-h-24">
                 <a
                     href="/"
