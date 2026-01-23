@@ -24,9 +24,9 @@ export function VerifiedIcon({ ...props }: SVGProps<SVGSVGElement>) {
 					<path
 						d="M9 12L11 14L15 10"
 						stroke="white"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
 					/>
 				</svg>
 			</Button>
