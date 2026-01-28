@@ -24,15 +24,23 @@
         --tertiary: oklch(0.97 0 0);
         --tertiary-foreground: oklch(0.178 0 0);
 
-        --accent: oklch(0.881 0.176 93.5);
-        --accent-foreground: oklch(0.178 0 0);
+        --accent: oklch(0.746 0.16 232.661);
+        --accent-foreground: oklch(1 0 0);
+
+        --brand: oklch(0.852 0.199 91.936);
+        --brand-foreground: oklch(0.178 0 0);
 
         --border: oklch(0.94 0 0);
 
-        --focus: oklch(74.6% 0.16 232.661);
+        --field-background: oklch(1 0 0);
+        --field-foreground: oklch(0.178 0 0);
+        --field-placeholder: oklch(0.689 0 0);
+
+        --focus: oklch(0.746 0.16 232.661);
 
         --button-shadow-primary: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-        --button-shadow-secondary: 0 2px 2px 0 rgba(0, 0, 0, 0.04);
+        --outline-shadow:
+            0 0 0 1px oklch(0 0 0 / 0.08), 0 2px 2px 0 oklch(0 0 0 / 0.04);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -55,8 +63,11 @@
 
             --border: oklch(0.289 0 0);
 
-            --button-shadow-primary: 0 2px 2px 0 rgba(255, 255, 255, 0.1);
-            --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0);
+            --field-background: oklch(0.213 0 0);
+            --field-foreground: oklch(1 0 0);
+            --field-placeholder: oklch(0.375 0 0);
+
+            --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
         }
     }
 
@@ -80,8 +91,11 @@
 
         --border: oklch(0.289 0 0);
 
-        --button-shadow-primary: 0 2px 2px 0 rgba(255, 255, 255, 0.1);
-        --button-shadow-secondary: 0 0 0 1px rgba(255, 255, 255, 0);
+        --field-background: oklch(0.213 0 0);
+        --field-foreground: oklch(1 0 0);
+        --field-placeholder: oklch(0.375 0 0);
+
+        --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
     }
 }
 
@@ -125,11 +139,24 @@
         var(--color-accent-foreground) 10%
     );
 
+    --color-brand: var(--brand);
+    --color-brand-foreground: var(--brand-foreground);
+    --color-brand-hover: color-mix(
+        in oklab,
+        var(--color-brand) 90%,
+        var(--color-brand-foreground) 10%
+    );
+
     --color-border: var(--border);
+
+    --color-field-background: var(--field-background);
+    --color-field-foreground: var(--field-foreground);
+    --color-field-placeholder: var(--field-placeholder);
+
     --color-focus: var(--focus);
 
     --shadow-button-primary: var(--button-shadow-primary);
-    --shadow-button-secondary: var(--button-shadow-secondary);
+    --shadow-outline: var(--outline-shadow);
 }
 
 .debug {

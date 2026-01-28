@@ -21,7 +21,7 @@ export const buttonVariants = tv({
                 
             ],
             secondary: [
-                'bg-secondary text-secondary-foreground shadow-button-secondary border-border border',
+                'bg-secondary text-secondary-foreground shadow-outline',
                 'hover:bg-secondary-hover data-hovered:bg-secondary-hover',
                 'active:bg-secondary-hover data-pressed:bg-secondary-hover',
                 '[&>span[data-spinner]]:text-secondary-foreground'

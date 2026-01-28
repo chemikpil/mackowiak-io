@@ -4,7 +4,7 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/components/ui/spinner/spinner";
 import type { ButtonVariants } from "./button.style";
 import { buttonVariants } from "./button.style";
 
