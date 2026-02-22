@@ -17,7 +17,7 @@ export function Navigation() {
 	}, [currentPage, setCurrentPage]);
 
 	return totalPages > 1 ? (
-		<div className="flex place-items-center gap-4 mx-auto px-4 py-3 bg-muted rounded-2xl w-fit">
+		<div className="flex place-items-center gap-4 mx-auto px-4 py-3 bg-tertiary rounded-2xl w-fit">
 			<Button
 				variant="ghost"
 				size="icon-md"
@@ -31,7 +31,7 @@ export function Navigation() {
 				{Array.from({ length: totalPages }).map((_, index) => (
 					<motion.div
 						key={index}
-						className="size-2 bg-muted-foreground rounded-full cursor-pointer transition-colors will-change-transform data-[active=true]:bg-foreground data-[active=true]:w-4 hover:bg-foreground/60"
+						className="size-2 bg-muted rounded-full cursor-pointer transition-colors will-change-transform data-[active=true]:bg-foreground data-[active=true]:w-4 hover:bg-foreground/60"
 						data-active={currentPage === index}
 						onClick={() => gotoPage(index)}
 						whileHover={{ scale: 1.2 }}

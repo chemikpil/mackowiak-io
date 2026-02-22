@@ -1,168 +1,195 @@
 @layer base {
-    html,
-    body,
-    :root {
-        height: 100%;
+  html,
+  body,
+  :root {
+    font-family: system-ui, var(--font-sans);
+    font-weight: 400;
 
-        font-family: system-ui, var(--font-sans);
-        font-weight: 400;
+    --natural-white: 0.98 0.001 17.176;
+    --royal-white: 0.997 0 0;
+
+    --eerie-black: 0.218 0 0;
+    --charcoal-gray: 0.178 0 0;
+
+    --sky-blue: 0.746 0.16 232.661;
+    --shiny-green: 0.736 0.186 140;
+    --red-sun: 0.665 0.174 28.794;
+    --vibrant-gold: 0.881 0.176 93.53;
+  }
+
+  :root {
+    --background: oklch(var(--natural-white, 0.98 0.001 17.176));
+    --foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+    --surface: oklch(var(--royal-white, 0.997 0 0));
+
+    --muted: oklch(var(--charcoal-gray, 0.178 0 0) / 0.4);
+
+    --primary: oklch(var(--charcoal-gray, 0.178 0 0));
+    --primary-foreground: oklch(var(--royal-white, 0.997 0 0));
+
+    --secondary: oklch(var(--royal-white, 0.997 0 0));
+    --secondary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+
+    --tertiary: oklch(var(--natural-white, 0.98 0.001 17.176));
+    --tertiary-foreground: oklch(var(--charcoal-gray, 0.178 0 0) / 0.8);
+
+    --brand: oklch(var(--sky-blue, 0.746 0.16 232.661));
+    --brand-foreground: oklch(var(--royal-white, 0.997 0 0));
+
+    --success: oklch(var(--shiny-green, 0.736 0.186 140));
+    --success-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+
+    --danger: oklch(var(--red-sun, 0.665 0.174 28.794));
+    --danger-foreground: oklch(var(--royal-white, 0.997 0 0));
+
+    --warning: oklch(var(--vibrant-gold, 0.881 0.176 93.53));
+    --warning-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+
+    --focus: oklch(var(--sky-blue, 0.746 0.16 232.661));
+    --border: oklch(0.94 0 0);
+
+    --field-background: oklch(1 0 0);
+    --field-foreground: oklch(0.178 0 0);
+    --field-placeholder: oklch(0.689 0 0);
+
+    --button-shadow-primary: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    --outline-shadow:
+      0 0 0 1px oklch(0 0 0 / 0.08), 0 2px 2px 0 oklch(0 0 0 / 0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --background: oklch(var(--eerie-black, 0.218 0 0));
+      --foreground: oklch(var(--royal-white, 0.997 0 0));
+      --surface: oklch(var(--charcoal-gray, 0.178 0 0));
+
+      --muted: oklch(var(--royal-white, 0.997 0 0) / 0.4);
+
+      --primary: oklch(var(--royal-white, 0.997 0 0));
+      --primary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+
+      --secondary: oklch(var(--charcoal-gray, 0.178 0 0));
+      --secondary-foreground: oklch(var(--royal-white, 0.997 0 0));
+
+      --tertiary: oklch(var(--eerie-black, 0.218 0 0));
+      --tertiary-foreground: oklch(var(--royal-white, 0.997 0 0) / 0.8);
+
+      --border: oklch(0.94 0 0);
+
+      --field-background: oklch(0.213 0 0);
+      --field-foreground: oklch(1 0 0);
+      --field-placeholder: oklch(0.375 0 0);
+
+      --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
     }
+  }
 
-    :root {
-        --background: oklch(0.97 0 0);
-        --foreground: oklch(0.178 0 0);
-        --surface: oklch(1 0 0);
+  .dark,
+  [data-theme="dark"] {
+    --background: oklch(var(--eerie-black, 0.218 0 0));
+    --foreground: oklch(var(--royal-white, 0.997 0 0));
+    --surface: oklch(var(--charcoal-gray, 0.178 0 0));
 
-        --muted: oklch(0.97 0 0);
-        --muted-foreground: oklch(0.689 0 0);
-        --primary: oklch(0.213 0 0);
-        --primary-foreground: oklch(1 0 0);
+    --muted: oklch(var(--royal-white, 0.997 0 0) / 0.4);
 
-        --secondary: oklch(1 0 0);
-        --secondary-foreground: oklch(0.178 0 0);
+    --primary: oklch(var(--royal-white, 0.997 0 0));
+    --primary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
 
-        --tertiary: oklch(0.97 0 0);
-        --tertiary-foreground: oklch(0.178 0 0);
+    --secondary: oklch(var(--charcoal-gray, 0.178 0 0));
+    --secondary-foreground: oklch(var(--royal-white, 0.997 0 0));
 
-        --accent: oklch(0.746 0.16 232.661);
-        --accent-foreground: oklch(1 0 0);
+    --tertiary: oklch(var(--eerie-black, 0.218 0 0));
+    --tertiary-foreground: oklch(var(--royal-white, 0.997 0 0) / 0.8);
 
-        --brand: oklch(0.852 0.199 91.936);
-        --brand-foreground: oklch(0.178 0 0);
+    --border: oklch(0.94 0 0);
 
-        --border: oklch(0.94 0 0);
+    --field-background: oklch(0.213 0 0);
+    --field-foreground: oklch(1 0 0);
+    --field-placeholder: oklch(0.375 0 0);
 
-        --field-background: oklch(1 0 0);
-        --field-foreground: oklch(0.178 0 0);
-        --field-placeholder: oklch(0.689 0 0);
-
-        --focus: oklch(0.746 0.16 232.661);
-
-        --button-shadow-primary: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-        --outline-shadow:
-            0 0 0 1px oklch(0 0 0 / 0.08), 0 2px 2px 0 oklch(0 0 0 / 0.04);
-    }
-
-    @media (prefers-color-scheme: dark) {
-        html:not([data-theme]) {
-            --background: oklch(0.235 0 0);
-            --foreground: oklch(1 0 0);
-            --surface: oklch(0.213 0 0);
-
-            --muted: oklch(0.252 0 0);
-            --muted-foreground: oklch(0.375 0 0);
-
-            --primary: oklch(1 0 0);
-            --primary-foreground: oklch(0.213 0 0);
-
-            --secondary: oklch(0.213 0 0);
-            --secondary-foreground: oklch(1 0 0);
-
-            --tertiary: oklch(0.252 0 0);
-            --tertiary-foreground: oklch(1 0 0);
-
-            --border: oklch(0.289 0 0);
-
-            --field-background: oklch(0.213 0 0);
-            --field-foreground: oklch(1 0 0);
-            --field-placeholder: oklch(0.375 0 0);
-
-            --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
-        }
-    }
-
-    .dark,
-    [data-theme="dark"] {
-        --background: oklch(0.235 0 0);
-        --foreground: oklch(1 0 0);
-        --surface: oklch(0.213 0 0);
-
-        --muted: oklch(0.252 0 0);
-        --muted-foreground: oklch(0.375 0 0);
-
-        --primary: oklch(1 0 0);
-        --primary-foreground: oklch(0.213 0 0);
-
-        --secondary: oklch(0.213 0 0);
-        --secondary-foreground: oklch(1 0 0);
-
-        --tertiary: oklch(0.252 0 0);
-        --tertiary-foreground: oklch(1 0 0);
-
-        --border: oklch(0.289 0 0);
-
-        --field-background: oklch(0.213 0 0);
-        --field-foreground: oklch(1 0 0);
-        --field-placeholder: oklch(0.375 0 0);
-
-        --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
-    }
+    --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
+  }
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-surface: var(--surface);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
 
-    --color-muted: var(--muted);
-    --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
 
-    --color-primary: var(--primary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary-hover: color-mix(
-        in oklab,
-        var(--color-primary) 90%,
-        var(--color-primary-foreground) 10%
-    );
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: color-mix(
+    in oklab,
+    var(--color-primary) 90%,
+    var(--color-primary-foreground) 10%
+  );
 
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary-hover: color-mix(
-        in oklab,
-        var(--color-secondary) 96%,
-        var(--color-secondary-foreground) 4%
-    );
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: color-mix(
+    in oklab,
+    var(--color-secondary) 96%,
+    var(--color-secondary-foreground) 4%
+  );
 
-    --color-tertiary: var(--tertiary);
-    --color-tertiary-foreground: var(--tertiary-foreground);
-    --color-tertiary-hover: color-mix(
-        in oklab,
-        var(--color-tertiary) 96%,
-        var(--color-tertiary-foreground) 4%
-    );
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-hover: color-mix(
+    in oklab,
+    var(--color-tertiary) 96%,
+    var(--color-tertiary-foreground) 4%
+  );
 
-    --color-accent: var(--accent);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent-hover: color-mix(
-        in oklab,
-        var(--color-accent) 90%,
-        var(--color-accent-foreground) 10%
-    );
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-hover: color-mix(
+    in oklab,
+    var(--color-brand) 90%,
+    var(--color-brand-foreground) 10%
+  );
 
-    --color-brand: var(--brand);
-    --color-brand-foreground: var(--brand-foreground);
-    --color-brand-hover: color-mix(
-        in oklab,
-        var(--color-brand) 90%,
-        var(--color-brand-foreground) 10%
-    );
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-hover: color-mix(
+    in oklab,
+    var(--color-success) 90%,
+    var(--color-success-foreground) 10%
+  );
 
-    --color-border: var(--border);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-hover: color-mix(
+    in oklab,
+    var(--color-warning) 90%,
+    var(--color-warning-foreground) 10%
+  );
 
-    --color-field-background: var(--field-background);
-    --color-field-foreground: var(--field-foreground);
-    --color-field-placeholder: var(--field-placeholder);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-danger-hover: color-mix(
+    in oklab,
+    var(--color-danger) 90%,
+    var(--color-danger-foreground) 10%
+  );
 
-    --color-focus: var(--focus);
+  --color-border: var(--border);
 
-    --shadow-button-primary: var(--button-shadow-primary);
-    --shadow-outline: var(--outline-shadow);
+  --color-field-background: var(--field-background);
+  --color-field-foreground: var(--field-foreground);
+  --color-field-placeholder: var(--field-placeholder);
+
+  --color-focus: var(--focus);
+
+  --shadow-button-primary: var(--button-shadow-primary);
+  --shadow-outline: var(--outline-shadow);
 }
 
 .debug {
-    outline: 1px solid red;
+  outline: 1px solid red;
 }
 
 .debug > * {
-    outline: 1px solid green;
+  outline: 1px solid green;
 }
