@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 import {
 	Button as AriaButton,
@@ -30,15 +31,20 @@ export function Button({
 		>
 			{composeRenderProps(children, (children, { isPending }) => (
 				<>
-					{isPending && (
-						<span
-							aria-hidden
-							data-spinner
-							className="flex absolute inset-0 justify-center items-center"
-						>
-							<Spinner />
-						</span>
-					)}
+					<AnimatePresence mode="popLayout">
+						{isPending && (
+							<motion.span
+								initial={{ opacity: 0, scale: 0.5 }}
+								animate={{ opacity: 1, scale: 1 }}
+								exit={{ opacity: 0, scale: 0.5 }}
+								aria-hidden
+								data-spinner
+								className="flex absolute inset-0 justify-center items-center"
+							>
+								<Spinner />
+							</motion.span>
+						)}
+					</AnimatePresence>
 					{children}
 				</>
 			))}

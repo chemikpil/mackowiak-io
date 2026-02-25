@@ -51,10 +51,6 @@
     --field-background: oklch(1 0 0);
     --field-foreground: oklch(0.178 0 0);
     --field-placeholder: oklch(0.689 0 0);
-
-    --button-shadow-primary: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-    --outline-shadow:
-      0 0 0 1px oklch(0 0 0 / 0.08), 0 2px 2px 0 oklch(0 0 0 / 0.04);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -79,8 +75,6 @@
       --field-background: oklch(0.213 0 0);
       --field-foreground: oklch(1 0 0);
       --field-placeholder: oklch(0.375 0 0);
-
-      --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
     }
   }
 
@@ -106,8 +100,6 @@
     --field-background: oklch(0.213 0 0);
     --field-foreground: oklch(1 0 0);
     --field-placeholder: oklch(0.375 0 0);
-
-    --outline-shadow: 0 0 0 1px oklch(1 0 0 / 0.08);
   }
 }
 
@@ -181,9 +173,6 @@
   --color-field-placeholder: var(--field-placeholder);
 
   --color-focus: var(--focus);
-
-  --shadow-button-primary: var(--button-shadow-primary);
-  --shadow-outline: var(--outline-shadow);
 }
 
 .debug {
