@@ -51,10 +51,16 @@
     --field-background: oklch(1 0 0);
     --field-foreground: oklch(0.178 0 0);
     --field-placeholder: oklch(0.689 0 0);
+
+    --ai-gradient:
+      to left, oklch(0.64 0.19 244) 0%, oklch(0.63 0.15 275) 34%,
+      oklch(0.62 0.23 20) 68%, oklch(0.75 0.19 70) 100%;
   }
 
   @media (prefers-color-scheme: dark) {
-    html {
+    :root,
+    html,
+    body {
       --background: oklch(var(--eerie-black, 0.218 0 0));
       --foreground: oklch(var(--royal-white, 0.997 0 0));
       --surface: oklch(var(--charcoal-gray, 0.178 0 0));

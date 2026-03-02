@@ -47,7 +47,9 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    html {
+    :root,
+    html,
+    body {
       /* ----- Button ----- */
       --button-primary-gradient:
         to top, oklch(var(--charcoal-gray) / 0.25) 0%,
