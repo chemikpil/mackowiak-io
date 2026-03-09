@@ -1,0 +1,16 @@
+---
+import { Link } from "@/components/ui/link";
+import MainLayout from "@/layouts/main-layout.astro";
+---
+
+<MainLayout variant="error">
+    <div class="flex flex-col items-center justify-center gap-4 text-center">
+        <p class="text-center font-bold text-[160px] leading-none tracking-tight opacity-10 md:text-[220px]">
+            404
+        </p>
+        <h1 class="-mt-12 text-2xl md:-mt-16">Nothing to see here</h1>
+        <Link href="/" variant="primary">
+            Go home
+        </Link>
+    </div>
+</MainLayout>
