@@ -1,190 +1,168 @@
 @layer base {
-  html,
-  body,
-  :root {
-    font-family: system-ui, var(--font-sans);
-    font-weight: 400;
-
-    --natural-white: 0.98 0.001 17.176;
-    --royal-white: 0.997 0 0;
-
-    --eerie-black: 0.218 0 0;
-    --charcoal-gray: 0.178 0 0;
-
-    --sky-blue: 0.746 0.16 232.661;
-    --shiny-green: 0.736 0.186 140;
-    --red-sun: 0.665 0.174 28.794;
-    --vibrant-gold: 0.881 0.176 93.53;
-  }
-
-  :root {
-    --background: oklch(var(--natural-white, 0.98 0.001 17.176));
-    --foreground: oklch(var(--charcoal-gray, 0.178 0 0));
-    --surface: oklch(var(--royal-white, 0.997 0 0));
-
-    --muted: oklch(var(--charcoal-gray, 0.178 0 0) / 0.4);
-
-    --primary: oklch(var(--charcoal-gray, 0.178 0 0));
-    --primary-foreground: oklch(var(--royal-white, 0.997 0 0));
-
-    --secondary: oklch(var(--royal-white, 0.997 0 0));
-    --secondary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
-
-    --tertiary: oklch(var(--natural-white, 0.98 0.001 17.176));
-    --tertiary-foreground: oklch(var(--charcoal-gray, 0.178 0 0) / 0.8);
-
-    --brand: oklch(var(--sky-blue, 0.746 0.16 232.661));
-    --brand-foreground: oklch(var(--royal-white, 0.997 0 0));
-
-    --success: oklch(var(--shiny-green, 0.736 0.186 140));
-    --success-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
-
-    --danger: oklch(var(--red-sun, 0.665 0.174 28.794));
-    --danger-foreground: oklch(var(--royal-white, 0.997 0 0));
-
-    --warning: oklch(var(--vibrant-gold, 0.881 0.176 93.53));
-    --warning-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
-
-    --focus: oklch(var(--sky-blue, 0.746 0.16 232.661));
-    --border: oklch(0.94 0 0);
-
-    --field-background: oklch(1 0 0);
-    --field-foreground: oklch(0.178 0 0);
-    --field-placeholder: oklch(0.689 0 0);
-
-    --ai-gradient:
-      to left, oklch(0.64 0.19 244) 0%, oklch(0.63 0.15 275) 34%,
-      oklch(0.62 0.23 20) 68%, oklch(0.75 0.19 70) 100%;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root,
     html,
-    body {
-      --background: oklch(var(--eerie-black, 0.218 0 0));
-      --foreground: oklch(var(--royal-white, 0.997 0 0));
-      --surface: oklch(var(--charcoal-gray, 0.178 0 0));
+    body,
+    :root {
+        font-family: system-ui, var(--font-sans);
+        font-weight: 400;
 
-      --muted: oklch(var(--royal-white, 0.997 0 0) / 0.4);
+        --natural-white: 0.98 0.001 17.176;
+        --royal-white: 0.997 0 0;
 
-      --primary: oklch(var(--royal-white, 0.997 0 0));
-      --primary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+        --eerie-black: 0.218 0 0;
+        --charcoal-gray: 0.178 0 0;
 
-      --secondary: oklch(var(--charcoal-gray, 0.178 0 0));
-      --secondary-foreground: oklch(var(--royal-white, 0.997 0 0));
-
-      --tertiary: oklch(var(--eerie-black, 0.218 0 0));
-      --tertiary-foreground: oklch(var(--royal-white, 0.997 0 0) / 0.8);
-
-      --border: oklch(0.94 0 0);
-
-      --field-background: oklch(0.213 0 0);
-      --field-foreground: oklch(1 0 0);
-      --field-placeholder: oklch(0.375 0 0);
+        --sky-blue: 0.746 0.16 232.661;
+        --shiny-green: 0.736 0.186 140;
+        --red-sun: 0.665 0.174 28.794;
+        --vibrant-gold: 0.881 0.176 93.53;
     }
-  }
 
-  .dark,
-  [data-theme="dark"] {
-    --background: oklch(var(--eerie-black, 0.218 0 0));
-    --foreground: oklch(var(--royal-white, 0.997 0 0));
-    --surface: oklch(var(--charcoal-gray, 0.178 0 0));
+    :root {
+        --background: light-dark(
+            oklch(var(--natural-white)),
+            oklch(var(--eerie-black))
+        );
+        --foreground: light-dark(
+            oklch(var(--charcoal-gray)),
+            oklch(var(--royal-white))
+        );
+        --surface: light-dark(
+            oklch(var(--royal-white)),
+            oklch(var(--charcoal-gray))
+        );
 
-    --muted: oklch(var(--royal-white, 0.997 0 0) / 0.4);
+        --muted: color-mix(in oklab, var(--surface) 60%, var(--foreground) 40%);
 
-    --primary: oklch(var(--royal-white, 0.997 0 0));
-    --primary-foreground: oklch(var(--charcoal-gray, 0.178 0 0));
+        --primary: light-dark(
+            oklch(var(--charcoal-gray)),
+            oklch(var(--royal-white))
+        );
+        --primary-foreground: light-dark(
+            oklch(var(--royal-white)),
+            oklch(var(--charcoal-gray))
+        );
 
-    --secondary: oklch(var(--charcoal-gray, 0.178 0 0));
-    --secondary-foreground: oklch(var(--royal-white, 0.997 0 0));
+        --secondary: light-dark(
+            oklch(var(--royal-white)),
+            oklch(var(--charcoal-gray))
+        );
+        --secondary-foreground: light-dark(
+            oklch(var(--charcoal-gray)),
+            oklch(var(--royal-white))
+        );
 
-    --tertiary: oklch(var(--eerie-black, 0.218 0 0));
-    --tertiary-foreground: oklch(var(--royal-white, 0.997 0 0) / 0.8);
+        --tertiary: light-dark(
+            oklch(var(--natural-white)),
+            oklch(var(--eerie-black))
+        );
+        --tertiary-foreground: light-dark(
+            oklch(var(--charcoal-gray) / 0.8),
+            oklch(var(--royal-white) / 0.8)
+        );
 
-    --border: oklch(0.94 0 0);
+        --brand: oklch(var(--sky-blue));
+        --brand-foreground: oklch(var(--royal-white));
 
-    --field-background: oklch(0.213 0 0);
-    --field-foreground: oklch(1 0 0);
-    --field-placeholder: oklch(0.375 0 0);
-  }
+        --success: oklch(var(--shiny-green));
+        --success-foreground: oklch(var(--royal-white));
+
+        --danger: oklch(var(--red-sun));
+        --danger-foreground: oklch(var(--royal-white));
+
+        --warning: oklch(var(--vibrant-gold));
+        --warning-foreground: oklch(var(--charcoal-gray));
+
+        --focus: oklch(var(--sky-blue));
+        --border: var(--muted);
+
+        --ai-gradient:
+            to left, oklch(0.64 0.19 244) 0%, oklch(0.63 0.15 275) 34%,
+            oklch(0.62 0.23 20) 68%, oklch(0.75 0.19 70) 100%;
+    }
+
+    .light,
+    [data-theme="light"] {
+        color-scheme: light;
+    }
+
+    .dark,
+    [data-theme="dark"] {
+        color-scheme: dark;
+    }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-surface: var(--surface);
 
-  --color-muted: var(--muted);
+    --color-muted: var(--muted);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary-hover: color-mix(
-    in oklab,
-    var(--color-primary) 90%,
-    var(--color-primary-foreground) 10%
-  );
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary-hover: color-mix(
+        in oklab,
+        var(--color-primary) 90%,
+        var(--color-primary-foreground) 10%
+    );
 
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary-hover: color-mix(
-    in oklab,
-    var(--color-secondary) 96%,
-    var(--color-secondary-foreground) 4%
-  );
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary-hover: color-mix(
+        in oklab,
+        var(--color-secondary) 96%,
+        var(--color-secondary-foreground) 4%
+    );
 
-  --color-tertiary: var(--tertiary);
-  --color-tertiary-foreground: var(--tertiary-foreground);
-  --color-tertiary-hover: color-mix(
-    in oklab,
-    var(--color-tertiary) 96%,
-    var(--color-tertiary-foreground) 4%
-  );
+    --color-tertiary: var(--tertiary);
+    --color-tertiary-foreground: var(--tertiary-foreground);
+    --color-tertiary-hover: color-mix(
+        in oklab,
+        var(--color-tertiary) 96%,
+        var(--color-tertiary-foreground) 4%
+    );
 
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-brand-hover: color-mix(
-    in oklab,
-    var(--color-brand) 90%,
-    var(--color-brand-foreground) 10%
-  );
+    --color-brand: var(--brand);
+    --color-brand-foreground: var(--brand-foreground);
+    --color-brand-hover: color-mix(
+        in oklab,
+        var(--color-brand) 90%,
+        var(--color-brand-foreground) 10%
+    );
 
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-success-hover: color-mix(
-    in oklab,
-    var(--color-success) 90%,
-    var(--color-success-foreground) 10%
-  );
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-success-hover: color-mix(
+        in oklab,
+        var(--color-success) 90%,
+        var(--color-success-foreground) 10%
+    );
 
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-  --color-warning-hover: color-mix(
-    in oklab,
-    var(--color-warning) 90%,
-    var(--color-warning-foreground) 10%
-  );
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-hover: color-mix(
+        in oklab,
+        var(--color-warning) 90%,
+        var(--color-warning-foreground) 10%
+    );
 
-  --color-danger: var(--danger);
-  --color-danger-foreground: var(--danger-foreground);
-  --color-danger-hover: color-mix(
-    in oklab,
-    var(--color-danger) 90%,
-    var(--color-danger-foreground) 10%
-  );
+    --color-danger: var(--danger);
+    --color-danger-foreground: var(--danger-foreground);
+    --color-danger-hover: color-mix(
+        in oklab,
+        var(--color-danger) 90%,
+        var(--color-danger-foreground) 10%
+    );
 
-  --color-border: var(--border);
+    --color-border: var(--border);
 
-  --color-field-background: var(--field-background);
-  --color-field-foreground: var(--field-foreground);
-  --color-field-placeholder: var(--field-placeholder);
-
-  --color-focus: var(--focus);
+    --color-focus: var(--focus);
 }
 
 .debug {
-  outline: 1px solid red;
+    outline: 1px solid red;
 }
 
 .debug > * {
-  outline: 1px solid green;
+    outline: 1px solid green;
 }
