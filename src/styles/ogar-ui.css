@@ -1,10 +1,11 @@
 @layer base {
-    html,
-    body,
     :root {
+        color-scheme: light dark;
+
         font-family: system-ui, var(--font-sans);
         font-weight: 400;
 
+        /* Base Colors */
         --natural-white: 0.98 0.001 17.176;
         --royal-white: 0.997 0 0;
 
@@ -15,9 +16,8 @@
         --shiny-green: 0.736 0.186 140;
         --red-sun: 0.665 0.174 28.794;
         --vibrant-gold: 0.881 0.176 93.53;
-    }
 
-    :root {
+        /* OgarUI Theme */
         --background: light-dark(
             oklch(var(--natural-white)),
             oklch(var(--eerie-black))
