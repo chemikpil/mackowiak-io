@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @import "./ogar-ui.css";
-@import "./ogar-components.css";
 
 @plugin "tailwindcss-animate";
 

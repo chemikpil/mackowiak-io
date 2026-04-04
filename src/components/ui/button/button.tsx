@@ -1,55 +1,54 @@
-import { AnimatePresence, motion } from "motion/react";
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 import {
-	Button as AriaButton,
-	composeRenderProps,
+    Button as AriaButton,
+    composeRenderProps,
 } from "react-aria-components";
 
-import { Spinner } from "@/components/ui/spinner/spinner";
+import {
+    LoadingSwap,
+    type LoadingSwapProps,
+} from "@/components/shared/loading-swap/loading-swap";
+
 import type { ButtonVariants } from "./button.style";
 import { buttonVariants } from "./button.style";
 
 interface ButtonProps extends AriaButtonProps, ButtonVariants {
-	ref?: React.Ref<HTMLButtonElement>;
+    ref?: React.Ref<HTMLButtonElement>;
+    swapOptions?: Omit<LoadingSwapProps, "children" | "isError" | "isPending">;
 }
 
 export function Button({
-	className,
-	variant,
-	size,
-	ref,
-	children,
-	...props
+    className,
+    variant,
+    size,
+    ref,
+    children,
+    isError = false,
+    swapOptions,
+    ...props
 }: ButtonProps) {
-	return (
-		<AriaButton
-			className={composeRenderProps(className, (className, renderProps) =>
-				buttonVariants({ ...renderProps, variant, size, className }),
-			)}
-			ref={ref}
-			{...props}
-		>
-			{composeRenderProps(children, (children, { isPending }) => (
-				<>
-					<AnimatePresence mode="popLayout">
-						{isPending && (
-							<motion.span
-								initial={{ opacity: 0, scale: 0.5 }}
-								animate={{ opacity: 1, scale: 1 }}
-								exit={{ opacity: 0, scale: 0.5 }}
-								aria-hidden
-								data-spinner
-								className="flex absolute inset-0 justify-center items-center"
-							>
-								<Spinner />
-							</motion.span>
-						)}
-					</AnimatePresence>
-					{children}
-				</>
-			))}
-		</AriaButton>
-	);
+    const { root, content } = buttonVariants();
+    return (
+        <AriaButton
+            className={composeRenderProps(className, (className, renderProps) =>
+                root({ ...renderProps, variant, size, isError, className }),
+            )}
+            ref={ref}
+            {...props}
+        >
+            {composeRenderProps(children, (children, { isPending }) => (
+                <LoadingSwap
+                    isPending={isPending}
+                    isError={isError}
+                    {...swapOptions}
+                >
+                    <span className={content({ variant, size })}>
+                        {children}
+                    </span>
+                </LoadingSwap>
+            ))}
+        </AriaButton>
+    );
 }
 
 Button.displayName = "Ogar-UI.Button";

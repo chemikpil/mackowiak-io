@@ -43,8 +43,8 @@
         );
 
         --secondary: light-dark(
-            oklch(var(--royal-white)),
-            oklch(var(--charcoal-gray))
+            oklch(var(--natural-white)),
+            oklch(var(--eerie-black))
         );
         --secondary-foreground: light-dark(
             oklch(var(--charcoal-gray)),
@@ -73,7 +73,7 @@
         --warning-foreground: oklch(var(--charcoal-gray));
 
         --focus: oklch(var(--sky-blue));
-        --border: var(--muted);
+        --border: color-mix(in oklab, var(--foreground) 10%, transparent);
 
         --ai-gradient:
             to left, oklch(0.64 0.19 244) 0%, oklch(0.63 0.15 275) 34%,
@@ -157,6 +157,17 @@
     --color-border: var(--border);
 
     --color-focus: var(--focus);
+
+    /* Custom animations */
+
+    @keyframes wave {
+        33% {
+            opacity: 1;
+        }
+        66% {
+            opacity: 0.15;
+        }
+    }
 }
 
 .debug {
