@@ -1,6 +1,11 @@
 export const slides = [
-	
 	[
+		{
+			id: 10,
+			name: "Cais das Colunas, Lisbon, Portugal",
+			aspectRatio: "17/10",
+			src: "/photography/2021-lisbon.jpg",
+		},
 		{
 			id: 9,
 			name: "Calp, Spain, Seagull",
@@ -25,6 +30,8 @@ export const slides = [
 			aspectRatio: "4/5",
 			src: "/photography/2020-tatry-1.jpg",
 		},
+	],
+	[
 		{
 			id: 5,
 			name: "Poznań, Poland, Strajk kobet",
@@ -36,9 +43,7 @@ export const slides = [
 			name: "Spindleruv Mlyn, Czechia",
 			aspectRatio: "4/5",
 			src: "/photography/2020-spindler.jpg",
-		}
-	],
-	[
+		},
 		{
 			id: 3,
 			name: "Berlin, Germany, Sunrise",

@@ -31,8 +31,6 @@
             oklch(var(--charcoal-gray))
         );
 
-        --muted: color-mix(in oklab, var(--surface) 60%, var(--foreground) 40%);
-
         --primary: light-dark(
             oklch(var(--charcoal-gray)),
             oklch(var(--royal-white))
@@ -43,21 +41,22 @@
         );
 
         --secondary: light-dark(
-            oklch(var(--natural-white)),
-            oklch(var(--eerie-black))
+            oklch(var(--charcoal-gray) / 0.05),
+            oklch(var(--royal-white) / 0.1)
         );
         --secondary-foreground: light-dark(
-            oklch(var(--charcoal-gray)),
-            oklch(var(--royal-white))
-        );
-
-        --tertiary: light-dark(
-            oklch(var(--natural-white)),
-            oklch(var(--eerie-black))
-        );
-        --tertiary-foreground: light-dark(
             oklch(var(--charcoal-gray) / 0.8),
             oklch(var(--royal-white) / 0.8)
+        );
+
+        --muted: light-dark(
+            oklch(var(--charcoal-gray) / 0.05),
+            oklch(var(--royal-white) / 0.1)
+        );
+        --muted-foreground: color-mix(
+            in oklab,
+            var(--surface) 60%,
+            var(--foreground) 40%
         );
 
         --brand: oklch(var(--sky-blue));
@@ -96,8 +95,6 @@
     --color-foreground: var(--foreground);
     --color-surface: var(--surface);
 
-    --color-muted: var(--muted);
-
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
     --color-primary-hover: color-mix(
@@ -114,12 +111,12 @@
         var(--color-secondary-foreground) 4%
     );
 
-    --color-tertiary: var(--tertiary);
-    --color-tertiary-foreground: var(--tertiary-foreground);
-    --color-tertiary-hover: color-mix(
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted-hover: color-mix(
         in oklab,
-        var(--color-tertiary) 96%,
-        var(--color-tertiary-foreground) 4%
+        var(--color-muted) 40%,
+        var(--color-foreground) 60%
     );
 
     --color-brand: var(--brand);

@@ -90,7 +90,7 @@ export function LoadingSwap({
             <AnimatePresence mode="popLayout">
                 <div
                     className={twMerge(
-                        "flex place-items-center justify-center relative overflow-hidden",
+                        "relative flex items-center justify-center overflow-hidden",
                         className,
                     )}
                 >
@@ -101,7 +101,7 @@ export function LoadingSwap({
                             animate="visible"
                             exit="hidden"
                             aria-hidden
-                            className="flex absolute inset-0 justify-center items-center"
+                            className="absolute inset-0 flex items-center justify-center"
                             key={state}
                         >
                             {swapCopy[state]}
@@ -112,7 +112,7 @@ export function LoadingSwap({
                         initial={false}
                         animate={state === "idle" ? "visible" : "hidden"}
                         exit="hidden"
-                        className="flex place-items-center justify-center"
+                        className="flex items-center justify-center"
                     >
                         {children}
                     </motion.span>
